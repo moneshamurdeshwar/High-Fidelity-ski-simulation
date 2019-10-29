@@ -2,43 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class ViveGrab : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    private Hand hand;
+
+    // Use this for initialization
     void Start()
     {
-        
+        hand = gameObject.GetComponent<Hand>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public Vector2 getTrackPadPos()
     {
-        
+        SteamVR_Action_Vector2 trackpadPos = SteamVR_Actions._default.touchpos;
+
+        Debug.Log(trackpadPos.GetAxis(hand.handType));
+        return trackpadPos.GetAxis(hand.handType);
     }
 
-    // I was looking at this tutorial (https://circuitstream.com/blog/required-vive-code/) to figure out how to get the touchpad input, but it seems outdated.
-    private SteamVR_TrackedObject trackedObj;
-
-    private SteamVR_Controller.Device Controller
-
-    {
-
-        get
-
-        {
-
-            return SteamVR_Controller.Input((int)trackedObj.index);
-
-        }
-
-    }
-
-    void Awake()
-
-    {
-
-        trackedObj = GetComponent();
-
-    }
 }
