@@ -45,6 +45,10 @@
       "type": "pose"
     },
     {
+      "name": "/actions/default/in/forward",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     }
@@ -117,7 +121,8 @@
       "/actions/default/in/SnapTurnRight": "Snap Turn (Right)",
       "/actions/default/in/touchpad": "touchpad",
       "/actions/default/in/touchpos": "touchpos",
-      "/actions/default/in/Pose": "pose"
+      "/actions/default/in/Pose": "pose",
+      "/actions/default/in/forward": "forward"
     }
   ]
 }

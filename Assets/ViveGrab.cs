@@ -7,6 +7,8 @@ using Valve.VR.InteractionSystem;
 public class ViveGrab : MonoBehaviour
 {
 
+    public Vector2 trackPadPos;
+
     // Use this for initialization
     void Start()
     {
@@ -16,7 +18,7 @@ public class ViveGrab : MonoBehaviour
     private void Update()
     {
         Debug.Log(getTrackPadPos());
-
+        trackPadPos = getTrackPadPos();
     }
 
     public Vector2 getTrackPadPos()
@@ -24,6 +26,7 @@ public class ViveGrab : MonoBehaviour
         SteamVR_Action_Vector2 trackpadPos = SteamVR_Actions._default.touchpos;
 
         return trackpadPos.GetAxis(SteamVR_Input_Sources.LeftHand);
+       
     }
 
 }
