@@ -6,7 +6,7 @@ using Valve.VR;
 
 public class Movement : MonoBehaviour
 {
-    private int speed = 1;
+    private int speed = 5;
     private Rigidbody rb;
     private Vector3 movement;
     private bool move;
