@@ -36,7 +36,12 @@ public class Movement : MonoBehaviour
     void Update()
     {
 
-        if(!usingTracker)
+        Quaternion newRotation = Quaternion.FromToRotation(sitSki.rotation.eulerAngles, Camera.main.transform.forward);
+        Vector3 oldRotation = sitSki.rotation.eulerAngles;
+        oldRotation.y = Camera.main.transform.rotation.y;
+        //sitSki.rotation = Quaternion.Euler(oldRotation);
+
+        if (!usingTracker)
         {
             SteamVR_Action_Boolean forward = SteamVR_Actions._default.forward;
            // move = forward.GetLastState(SteamVR_Input_Sources.LeftHand) || forward.GetLastState(SteamVR_Input_Sources.RightHand);
