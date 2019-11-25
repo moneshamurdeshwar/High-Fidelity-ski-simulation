@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
+/*
+ * Is something wrong?
+ * 
+ * - Physics: make sure camera rig's mass is 0.3 and drag is 1.0
+ * - Tracker: set device index to 5
+ */
+
 public class Movement : MonoBehaviour
 {
     private int speed = 5;
@@ -51,8 +58,22 @@ public class Movement : MonoBehaviour
         else
         {
             Debug.Log(tracker.eulerAngles.x);
+
+            float angle = tracker.eulerAngles.x;
+
+            if (angle > 260)
+                angle = 0;
+            else if (angle > 45)
+                angle = 45;
+
+            //Debug.Log(angle);
+
+            float force = 0 + (angle - 0) * (1 - 0) / (45 - 0);
+            force *= speed;
+
+            rb.AddForce(Camera.main.transform.forward * force);
         }
-        
+
     }
 
     //private void FixedUpdate()
