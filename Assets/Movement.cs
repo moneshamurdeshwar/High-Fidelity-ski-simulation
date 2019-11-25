@@ -32,10 +32,10 @@ public class Movement : MonoBehaviour
         if(!usingTracker)
         {
             SteamVR_Action_Boolean forward = SteamVR_Actions._default.forward;
-            move = forward.GetLastState(SteamVR_Input_Sources.LeftHand) || forward.GetLastState(SteamVR_Input_Sources.RightHand);
-            movement = Camera.main.transform.forward;
+           // move = forward.GetLastState(SteamVR_Input_Sources.LeftHand) || forward.GetLastState(SteamVR_Input_Sources.RightHand);
+           // movement = Camera.main.transform.forward;
 
-            sitSki.rotation = Quaternion.FromToRotation(sitSki.rotation.eulerAngles, Camera.main.transform.forward);
+            //sitSki.rotation = Quaternion.FromToRotation(sitSki.rotation.eulerAngles, Camera.main.transform.forward);
             //Vector3 rotation = sitSki.eulerAngles;
             //rotation.z += 180;
             //sitSki.rotation = Quaternion.Euler(rotation);
@@ -46,6 +46,8 @@ public class Movement : MonoBehaviour
                 rb.AddForce(Camera.main.transform.forward * speed);
         }
 
+        //Use X-axis for movement: 90 degrees is all the way forward, 270 degrees is all the way back.
+        //Put the tracker on the person with "BEN!" facing the ceiling to orient properly.
         else
         {
             Debug.Log(tracker.eulerAngles.x);
