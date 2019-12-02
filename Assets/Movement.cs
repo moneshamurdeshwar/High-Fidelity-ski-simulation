@@ -14,6 +14,7 @@ using Valve.VR;
 public class Movement : MonoBehaviour
 {
     private int speed = 5;
+    private int velMax = 50;
     private Rigidbody rb;
     private Vector3 movement;
     private bool move;
@@ -36,26 +37,32 @@ public class Movement : MonoBehaviour
     void Update()
     {
 
-        Quaternion newRotation = Quaternion.FromToRotation(sitSki.rotation.eulerAngles, Camera.main.transform.forward);
-        Vector3 oldRotation = sitSki.rotation.eulerAngles;
-        oldRotation.y = Camera.main.transform.rotation.y;
+        //Quaternion newRotation = Quaternion.FromToRotation(sitSki.rotation.eulerAngles, Camera.main.transform.forward);
+        //Vector3 oldRotation = sitSki.rotation.eulerAngles;
+        //oldRotation.y = Camera.main.transform.rotation.y;
         //sitSki.rotation = Quaternion.Euler(oldRotation);
+
+        //sitSki.rotation = new Quaternion(sitSki.rotation.x, Camera.main.transform.rotation.y, sitSki.rotation.z, sitSki.rotation.w);
 
         if (!usingTracker)
         {
             SteamVR_Action_Boolean forward = SteamVR_Actions._default.forward;
-           // move = forward.GetLastState(SteamVR_Input_Sources.LeftHand) || forward.GetLastState(SteamVR_Input_Sources.RightHand);
-           // movement = Camera.main.transform.forward;
+            // move = forward.GetLastState(SteamVR_Input_Sources.LeftHand) || forward.GetLastState(SteamVR_Input_Sources.RightHand);
+            // movement = Camera.main.transform.forward;
 
             //sitSki.rotation = Quaternion.FromToRotation(sitSki.rotation.eulerAngles, Camera.main.transform.forward);
             //Vector3 rotation = sitSki.eulerAngles;
             //rotation.z += 180;
             //sitSki.rotation = Quaternion.Euler(rotation);
 
-            if (forward.GetLastState(SteamVR_Input_Sources.LeftHand) || forward.GetLastState(SteamVR_Input_Sources.RightHand))
-                //    //transform.position = transform.position + Camera.main.transform.forward * speed * Time.deltaTime;
+            if (forward.GetLastState(SteamVR_Input_Sources.LeftHand) || forward.GetLastState(SteamVR_Input_Sources.RightHand) && rb.velocity.x < velMax && rb.velocity.y < velMax && rb.velocity.z < velMax)
+            {    //    //transform.position = transform.position + Camera.main.transform.forward * speed * Time.deltaTime;
                 //rb.MovePosition(transform.position + Camera.main.transform.forward * speed * Time.deltaTime);
-                rb.AddForce(Camera.main.transform.forward * speed);
+                Vector3 f = Camera.main.transform.forward * speed;
+                f.y = 0;
+                rb.AddForce(f);
+            }
+
         }
 
         //Use X-axis for movement: 90 degrees is all the way forward, 270 degrees is all the way back.
@@ -71,12 +78,18 @@ public class Movement : MonoBehaviour
             else if (angle > 45)
                 angle = 45;
 
-            //Debug.Log(angle);
+            Debug.Log(angle);
 
             float force = 0 + (angle - 0) * (1 - 0) / (45 - 0);
             force *= speed;
+            force *= 2;
 
-            rb.AddForce(Camera.main.transform.forward * force);
+            if (rb.velocity.x < velMax && rb.velocity.y < velMax && rb.velocity.z < velMax)
+            {
+                Vector3 f = Camera.main.transform.forward * force;
+                f.y = 0;
+                rb.AddForce(f);
+            }
         }
 
     }
