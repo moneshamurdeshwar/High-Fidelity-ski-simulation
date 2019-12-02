@@ -82,7 +82,7 @@ public class Movement : MonoBehaviour
 
             float force = 0 + (angle - 0) * (1 - 0) / (45 - 0);
             force *= speed;
-            force *= 2;
+            force *= 3;
 
             if (rb.velocity.x < velMax && rb.velocity.y < velMax && rb.velocity.z < velMax)
             {
