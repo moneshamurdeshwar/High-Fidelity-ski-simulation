@@ -1,5 +1,5 @@
 # High-Fidelity-Ski-Simulation
-Our high-fidelity skiing simulation runs on the HTC Vive and can be used with either a Vive controller or an HTC Vive Tracker. During runtime, it is also possible to dynamically switch which input source you wish to use by following the directions indicated below.  
+Our high-fidelity skiing simulation runs on the HTC Vive and can be used with either a Vive controller or an HTC Vive Tracker. During runtime, it is also possible to dynamically switch which input source you wish to use by following the checkbox instructions as indicated below. This project was developed in Unity 2019.2.1f1.  
 
 ## Instructions for Use with Controller(s)
 1. Click on "Camera Rig" in the hierarchy, find the Movement script in the Inspector, and uncheck "Using Tracker."
@@ -13,5 +13,12 @@ Our high-fidelity skiing simulation runs on the HTC Vive and can be used with ei
 4. Click on "Camera Rig" in the hierarchy, find the Movement script in the Inspector, and check "Using Tracker."
 5. To play, look in the direction you wish to travel and lean forward some amount to apply a corresponding force in that direction. If you get stuck in the snow, try looking around in different directions while leaning forward to wiggle out.
 6. Enjoy!
+
+## Deliverables
+- Input through controllers. *Fully implemented: Movement.cs*
+- Variable speed input through Tracker. *Fully implemented: Movements.cs*
+- Modeling of sit-ski in virtual reality. *Fully implemented: simulation*
+
+
 
 
