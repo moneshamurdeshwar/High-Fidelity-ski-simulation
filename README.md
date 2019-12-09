@@ -1,4 +1,4 @@
-# High-Fidelity-ski-simulation
+# High-Fidelity-Ski-Simulation
 Our high-fidelity skiing simulation runs on the HTC Vive and can be used with either a Vive controller or an HTC Vive Tracker. During runtime, it is also possible to dynamically switch which input source you wish to use by following the directions indicated below.  
 
 ## Instructions for Use with Controller(s)
